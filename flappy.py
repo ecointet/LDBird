@@ -1,8 +1,28 @@
 from itertools import cycle
 import random
 import sys
+import os
 import pygame
 from pygame.locals import *
+
+#Launch Darkly Client
+import ldclient
+from ldclient.config import Config
+
+######### LAUNCH DARKLY CONFIG #########
+APIKEY = "sdk-"
+##########################################
+
+#init Launch Darkly Client
+ldclient.set_config(Config(APIKEY))
+
+env_user = "ecointet"#os.getenv('API_USER')
+env_home = "test"#os.getenv('HOME')
+#init user
+user = {
+            "key": env_user,
+             "details": env_home
+            }
 
 FPS = 30
 SCREENWIDTH  = 288
@@ -12,28 +32,32 @@ BASEY        = SCREENHEIGHT * 0.79
 # image, sound and hitmask  dicts
 IMAGES, SOUNDS, HITMASKS = {}, {}, {}
 
+#Color From Launch Darkly
+bird_color = ldclient.get().variation("bird-color", user, False)
+
 # list of all possible players (tuple of 3 positions of flap)
 PLAYERS_LIST = (
     # red bird
     (
-        'assets/sprites/redbird-upflap.png',
-        'assets/sprites/redbird-midflap.png',
-        'assets/sprites/redbird-downflap.png',
+        'assets/sprites/'+bird_color+'bird-upflap.png',
+        'assets/sprites/'+bird_color+'bird-midflap.png',
+        'assets/sprites/'+bird_color+'bird-downflap.png',
     ),
     # blue bird
     (
-        'assets/sprites/bluebird-upflap.png',
-        'assets/sprites/bluebird-midflap.png',
-        'assets/sprites/bluebird-downflap.png',
+        'assets/sprites/'+bird_color+'bird-upflap.png',
+        'assets/sprites/'+bird_color+'bird-midflap.png',
+        'assets/sprites/'+bird_color+'bird-downflap.png',
     ),
     # yellow bird
     (
-        'assets/sprites/yellowbird-upflap.png',
-        'assets/sprites/yellowbird-midflap.png',
-        'assets/sprites/yellowbird-downflap.png',
+        'assets/sprites/'+bird_color+'bird-upflap.png',
+        'assets/sprites/'+bird_color+'bird-midflap.png',
+        'assets/sprites/'+bird_color+'bird-downflap.png',
     ),
 )
 
+print ("DEBUG: Bird Color is "+bird_color)
 # list of backgrounds
 BACKGROUNDS_LIST = (
     'assets/sprites/background-day.png',
@@ -58,7 +82,11 @@ def main():
     pygame.init()
     FPSCLOCK = pygame.time.Clock()
     SCREEN = pygame.display.set_mode((SCREENWIDTH, SCREENHEIGHT))
-    pygame.display.set_caption('Flappy Bird')
+    pygame.display.set_caption('Launch Darkly - Flappy Bird!')
+
+   
+
+
 
     # numbers sprites for score display
     IMAGES['numbers'] = (
@@ -97,6 +125,14 @@ def main():
         # select random background sprites
         randBg = random.randint(0, len(BACKGROUNDS_LIST) - 1)
         IMAGES['background'] = pygame.image.load(BACKGROUNDS_LIST[randBg]).convert()
+
+        # Call LaunchDarkly with the feature flag key you want to evaluate.
+        flag_value = ldclient.get().variation("background", user, False)
+        if flag_value == True:
+            background = "assets/sprites/background-french.png"
+            IMAGES['background'] = pygame.image.load(background).convert()
+            print("FF Special Background is "+background)
+       # show_message("Feature flag 'background' is %s for this user" % (flag_value))
 
         # select random player sprites
         randPlayer = random.randint(0, len(PLAYERS_LIST) - 1)
@@ -371,7 +407,13 @@ def showGameOverScreen(crashInfo):
         SCREEN.blit(IMAGES['base'], (basex, BASEY))
         showScore(score)
 
-        
+        # Call LaunchDarkly
+        flag_value = ldclient.get().variation("henri-mode", user, False)
+        if flag_value == True:
+            IMAGES['gameover'] = pygame.image.load('assets/sprites/gameover-henri.png').convert_alpha()
+        else:
+            IMAGES['gameover'] = pygame.image.load('assets/sprites/gameover.png').convert_alpha()
+            ##print("FF Special Gameover is ON")
 
 
         playerSurface = pygame.transform.rotate(IMAGES['player'][1], playerRot)
