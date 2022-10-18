@@ -1,7 +1,7 @@
 Launch Darkly FlapPyBird
 ===============
 
-![](https://drive.google.com/file/d/18logBRtY0vPch0M-xhBNxZIWpAPgeRqs/view?usp=sharing)
+![](https://raw.githubusercontent.com/ecointet/LDBird/master/ext/homepage.png)
 
 A FUN PYTHON Flappy Bird Clone made using [python-pygame][pygame]
 
@@ -50,7 +50,7 @@ Setup (as tested on MacOS)
 Demo
 ----------
 
-![](https://drive.google.com/file/d/18logBRtY0vPch0M-xhBNxZIWpAPgeRqs/view?usp=sharing)[https://drive.google.com/file/d/18logBRtY0vPch0M-xhBNxZIWpAPgeRqs/view?usp=sharing](https://drive.google.com/file/d/18logBRtY0vPch0M-xhBNxZIWpAPgeRqs/view?usp=sharing)
+![](https://raw.githubusercontent.com/ecointet/LDBird/master/ext/video.png)[https://drive.google.com/file/d/18logBRtY0vPch0M-xhBNxZIWpAPgeRqs/view?usp=sharing](https://drive.google.com/file/d/18logBRtY0vPch0M-xhBNxZIWpAPgeRqs/view?usp=sharing)
 
 
 
