@@ -5,6 +5,12 @@ Launch Darkly FlapPyBird
 
 A FUN PYTHON Flappy Bird Clone made using [python-pygame][pygame]
 
+## Tweak the Game with some **cool Feature Flags** (❤️ Launch Darkly)
+
+- Background
+- Bird Color
+- Game-Over Screen
+
 Setup (as tested on MacOS)
 ---------------------------
 
@@ -47,7 +53,7 @@ Setup (as tested on MacOS)
 1. Use <kbd>&uarr;</kbd> or <kbd>Space</kbd> key to play and <kbd>Esc</kbd> to close the game.
 
 
-Demo
+Demo (video)
 ----------
 
 ![](https://raw.githubusercontent.com/ecointet/LDBird/master/ext/video.png)[https://drive.google.com/file/d/18logBRtY0vPch0M-xhBNxZIWpAPgeRqs/view?usp=sharing](https://drive.google.com/file/d/18logBRtY0vPch0M-xhBNxZIWpAPgeRqs/view?usp=sharing)
