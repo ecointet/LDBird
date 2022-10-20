@@ -33,7 +33,7 @@ BASEY        = SCREENHEIGHT * 0.79
 IMAGES, SOUNDS, HITMASKS = {}, {}, {}
 
 #Color From Launch Darkly
-bird_color = ldclient.get().variation("bird-color", user, False)
+bird_color = ldclient.get().variation("bird-color", user, "red")
 
 # list of all possible players (tuple of 3 positions of flap)
 PLAYERS_LIST = (
