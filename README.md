@@ -1,7 +1,7 @@
 Launch Darkly FlapPyBird
 ===============
 
-![](https://raw.githubusercontent.com/ecointet/LDBird/master/ext/homepage.png)
+![](https://raw.githubusercontent.com/ecointet/LDBird/master/ext/preview-ldgame.png)
 
 A FUN PYTHON Flappy Bird Clone made using [python-pygame][pygame]
 
